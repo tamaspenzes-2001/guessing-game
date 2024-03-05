@@ -2,8 +2,8 @@ import game
 
 def main():
   print("Welcome!")
-  coin_flip = game.Game("coin flip", ["heads", "tails"])
-  dice_roll = game.Game("dice roll", range(1, 7))
+  coin_flip = game.CoinFlip()
+  dice_roll = game.DiceRoll()
   while True:
     game_type = input("\033[96;1mWhich guessing game do you want to play?\n1. Coin flip (2 possible options)\n2. Dice roll (6 possible options)\033[0m\n> ").lower()
     if (game_type == "1"):
@@ -11,6 +11,7 @@ def main():
         user_guess = input("\033[96;1mWhat's your tip? (heads/tails)\033[0m\n> ").lower()
         if (coin_flip.is_guess_valid(user_guess)):
           coin_flip.play(user_guess)
+          coin_flip.checkAchievements()
           print("\n")
           coin_flip.get_stats()
           break
@@ -36,6 +37,7 @@ def main():
         print("\n")
         break
       elif (wants_to_go_again == "quit"):
+        print("Bye! See you next time!")
         exit()
       else:
         print("\033[91;1mInvalid answer!\033[0m")
