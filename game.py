@@ -12,13 +12,13 @@ class Game:
 
   def play(self, guess):
     outcome = random.choice(self._choices)
-    print("The outcome is: " + str(outcome))
+    print("\033[93;1mThe outcome is: " + str(outcome) + "\033[0m")
     self._guesses += 1
     if (guess == outcome):
-      print("Congratulations! You nailed it!")
+      print("\033[92;1mCongratulations! You nailed it!\033[0m")
       self._correct_guesses += 1
     else:
-      print("Incorrect tip. Maybe next time.")
+      print("\033[91;1mIncorrect tip. Maybe next time.\033[0m")
 
   def get_stats(self):
-    print("Correct tips in " + self._game_type + ": " + str(self._correct_guesses) + "/" + str(self._guesses))
+    print("\033[93;1mCorrect tips in " + self._game_type + ": " + str(self._correct_guesses) + "/" + str(self._guesses) + "\033[0m")
