@@ -12,7 +12,7 @@ class Game:
 
   def play(self, guess):
     outcome = random.choice(self._choices)
-    print("\033[93;1mThe outcome is: " + str(outcome) + "\033[0m")
+    print("\n\033[93;1mThe outcome is: " + str(outcome) + "\033[0m")
     self._guesses += 1
     if (guess == outcome):
       print("\033[92;1mCongratulations! You nailed it!\033[0m")
@@ -50,7 +50,10 @@ class CoinFlip(Game):
       print("\033[93;1mYou unlocked all coin flip achievements!\033[0m")
 
   def get_stats(self):
-    print("\033[93;1mCorrect tips in coin flip: " + str(self._correct_guesses) + "/" + str(self._guesses) + "\033[0m")
+    print("\n\033[93;1mCOIN FLIP")
+    print("Correct tips: " + str(self._correct_guesses) + "/" + str(self._guesses))
+    print("Score: " + str(self._score))
+    print("Achievements: " + ", ".join(self._unlock_achievements))
 
 class DiceRoll(Game):
   def __init__(self):
@@ -75,4 +78,7 @@ class DiceRoll(Game):
       print("\033[93;1mYou unlocked all dice roll achievements!\033[0m")
 
   def get_stats(self):
-    print("\033[93;1mCorrect tips in dice roll: " + str(self._correct_guesses) + "/" + str(self._guesses) + "\033[0m")
+    print("\n\033[93;1mDICE ROLL")
+    print("Correct tips: " + str(self._correct_guesses) + "/" + str(self._guesses))
+    print("Score: " + str(self._score))
+    print("Achievements: " + ", ".join(self._unlock_achievements))

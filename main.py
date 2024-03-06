@@ -6,8 +6,6 @@ def play_coin_flip(coin_flip):
     if (coin_flip.is_guess_valid(user_guess)):
       coin_flip.play(user_guess)
       coin_flip.check_achievements()
-      print("\n")
-      coin_flip.get_stats()
       return
     else:
       print("\033[91;1mInvalid tip!\033[0m")
@@ -17,11 +15,14 @@ def play_dice_roll(dice_roll):
     user_guess = int(input("\033[96;1mWhat's your tip? (1-6)\033[0m\n> "))
     if (dice_roll.is_guess_valid(user_guess)):
       dice_roll.play(user_guess)
-      print("\n")
-      dice_roll.get_stats()
+      coin_flip.check_achievements()
       return
     else:
       print("\033[91;1mInvalid tip!\033[0m")
+
+def get_stats(coin_flip, dice_roll):
+  coin_flip.get_stats()
+  dice_roll.get_stats()
 
 def quit_game():
   while True:
@@ -38,15 +39,18 @@ def main_menu():
   coin_flip = game.CoinFlip()
   dice_roll = game.DiceRoll()
   while True:
-    game_type = input("\n\033[96;1mMain menu\033[0m\n\033[96;1m1. Play coin flip (2 possible options)\n2. Play dice roll (6 possible options)\033[0m\n3. Quit\n> ").lower()
-    if (game_type == "1"):
-      play_coin_flip(coin_flip)
-    elif (game_type == "2"):
-      play_dice_roll(dice_roll)
-    elif (game_type == "3"):
-      quit_game()
-    else:
-      print("\033[91;1mInvalid game number!\033[0m")
+    print("\n\033[96;1mMain menu")
+    print("1. Play coin flip (2 possible options)")
+    print("2. Play dice roll (6 possible options)")
+    print("3. See stats\033[0m")
+    print("4. Quit")
+    game_type = input("> ").lower()
+    match game_type:
+      case "1": play_coin_flip(coin_flip)
+      case "2": play_dice_roll(dice_roll)
+      case "3": get_stats(coin_flip, dice_roll)
+      case "4": quit_game()
+      case _: print("\033[91;1mInvalid game number!\033[0m")
 
 print("Welcome!")
 main_menu()
