@@ -33,7 +33,7 @@ class CoinFlip(Game):
     self._choices = ["heads", "tails"]
     self._achievements = ["Junior coin flipper", "Medior coin flipper", "Senior coin flipper", "Champion coin flipper"]
 
-  def checkAchievements(self):
+  def check_achievements(self):
     if (self._score >= 100 and not self._achievements[0] in self._unlocked_achievements):
       achievement = self._achievements[0]
     elif (self._score >= 200 and not self._achievements[1] in self._unlocked_achievements):
@@ -58,7 +58,7 @@ class DiceRoll(Game):
     self._choices = range(1, 7)
     self._achievements = ["Junior dice roller", "Medior dice roller", "Senior dice roller", "Champion dice roller"]
 
-  def checkAchievements(self):
+  def check_achievements(self):
     if (self._score >= 60 and not self._achievements[0] in self._unlocked_achievements):
       achievement = self._achievements[0]
     elif (self._score >= 120 and not self._achievements[1] in self._unlocked_achievements):
