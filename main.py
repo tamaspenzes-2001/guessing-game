@@ -1,4 +1,5 @@
 import game
+import time
 
 def play_coin_flip(coin_flip):
   while True:
@@ -6,6 +7,7 @@ def play_coin_flip(coin_flip):
     if (coin_flip.is_guess_valid(user_guess)):
       coin_flip.play(user_guess)
       coin_flip.check_achievements()
+      time.sleep(1)
       return
     else:
       print("\033[91;1mInvalid tip!\033[0m")
@@ -15,7 +17,8 @@ def play_dice_roll(dice_roll):
     user_guess = int(input("\033[96;1mWhat's your tip? (1-6)\033[0m\n> "))
     if (dice_roll.is_guess_valid(user_guess)):
       dice_roll.play(user_guess)
-      coin_flip.check_achievements()
+      dice_roll.check_achievements()
+      time.sleep(1)
       return
     else:
       print("\033[91;1mInvalid tip!\033[0m")
@@ -23,6 +26,7 @@ def play_dice_roll(dice_roll):
 def get_stats(coin_flip, dice_roll):
   coin_flip.get_stats()
   dice_roll.get_stats()
+  time.sleep(1)
 
 def quit_game():
   while True:
