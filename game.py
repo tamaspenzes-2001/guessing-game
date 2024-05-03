@@ -53,7 +53,7 @@ class CoinFlip(Game):
     print("\n\033[93;1mCOIN FLIP")
     print("Correct tips: " + str(self._correct_guesses) + "/" + str(self._guesses))
     print("Score: " + str(self._score))
-    print("Achievements: " + ", ".join(self._unlocked_achievements))
+    print("Achievements: " + ", ".join(self._unlocked_achievements) + "\033[0m")
 
 class DiceRoll(Game):
   def __init__(self):
@@ -81,4 +81,4 @@ class DiceRoll(Game):
     print("\n\033[93;1mDICE ROLL")
     print("Correct tips: " + str(self._correct_guesses) + "/" + str(self._guesses))
     print("Score: " + str(self._score))
-    print("Achievements: " + ", ".join(self._unlocked_achievements))
+    print("Achievements: " + ", ".join(self._unlocked_achievements) + "\033[0m")

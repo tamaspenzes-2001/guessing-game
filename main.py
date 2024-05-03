@@ -1,5 +1,6 @@
 import game
 import time
+import os
 
 def play_coin_flip(coin_flip):
   while True:
@@ -7,7 +8,8 @@ def play_coin_flip(coin_flip):
     if (coin_flip.is_guess_valid(user_guess)):
       coin_flip.play(user_guess)
       coin_flip.check_achievements()
-      time.sleep(1)
+      input("[Press Enter to continue]")
+      clear_screen()
       return
     else:
       print("\033[91;1mInvalid tip!\033[0m")
@@ -18,7 +20,8 @@ def play_dice_roll(dice_roll):
     if (dice_roll.is_guess_valid(user_guess)):
       dice_roll.play(user_guess)
       dice_roll.check_achievements()
-      time.sleep(1)
+      input("[Press Enter to continue]")
+      clear_screen()
       return
     else:
       print("\033[91;1mInvalid tip!\033[0m")
@@ -26,7 +29,8 @@ def play_dice_roll(dice_roll):
 def get_stats(coin_flip, dice_roll):
   coin_flip.get_stats()
   dice_roll.get_stats()
-  time.sleep(1)
+  input("[Press Enter to continue]")
+  clear_screen()
 
 def quit_game():
   while True:
@@ -39,11 +43,14 @@ def quit_game():
     else:
       print("\033[91;1mInvalid answer!\033[0m")
 
+def clear_screen():
+  os.system('cls' if os.name=='nt' else 'clear')
+
 def main_menu():
   coin_flip = game.CoinFlip()
   dice_roll = game.DiceRoll()
   while True:
-    print("\n\033[96;1mMain menu")
+    print("\033[96;1mMain menu")
     print("1. Play coin flip (2 possible options)")
     print("2. Play dice roll (6 possible options)")
     print("3. See stats\033[0m")
@@ -56,5 +63,5 @@ def main_menu():
       case "4": quit_game()
       case _: print("\033[91;1mInvalid game number!\033[0m")
 
-print("Welcome!")
+print("Welcome!\n")
 main_menu()
